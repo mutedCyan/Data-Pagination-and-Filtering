@@ -59,4 +59,4 @@ that displays suitable matches. </p>
 
 ---
 ### Live Demo:
-[Live Preview](https://github.com/mutedCyan/Data-pagination-and-filtering/blob/gh-pages/index.html)
+[Live Preview](https://mutedcyan.github.io/Data-Pagination-and-Filtering/)
