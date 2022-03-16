@@ -53,10 +53,10 @@ that displays suitable matches. </p>
 ### **Installation**
 
 1.  Navigate to the `code` button
-2.  Select `Dowload Zip`
+2.  Select `Download Zip`
 3.  Open / Copy path of index.html to chosen browser
 4.  Paste path into search bar
 
 ---
 ### Live Demo:
-[...]
+[Click to preview](https://htmlpreview.github.io/?https://github.com/mutedCyan/Data-pagination-and-filtering/blob/master/index.html)
