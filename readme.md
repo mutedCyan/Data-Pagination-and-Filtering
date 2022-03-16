@@ -1,7 +1,7 @@
 # **Data pagination and Filtering**
 
 ### _Techdegree Full Stack Javascript Unit 2_
-![Image](https://github.com/mutedCyan/Data-pagination-and-filtering/tree/master/img/Banner.png "Data Pagination Banner")
+[logo] https://github.com/mutedCyan/Data-pagination-and-filtering/blob/master/img/Banner.png "Data Pagination Banner"
 ### Developer: Sayon Angus
 
 *   Description
