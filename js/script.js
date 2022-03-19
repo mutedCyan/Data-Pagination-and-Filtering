@@ -78,26 +78,26 @@ For assistance:
          linkListHTML.insertAdjacentHTML('beforeend', buttonHTML);
       }
       // get all of the children from `linkListHTML` element (button)
-      const activeBtn = linkListHTML.children;
-      let currentBtn = activeBtn;
-      // button assigns class name to `active`
-      currentBtn.className = 'active';
-   
-      linkListHTML.addEventListener('click', (event) => {
-         // stores event.target property to `clicked` (easier to identify) 
-         let clickedPage = event.target;
-         // checks if the event target tagname is a button element
-         if (clickedPage.tagName === 'BUTTON'){
-            // clears class name to an empty string to remove exisiting button
-            currentBtn.className = '';
-            // assigns `active` class name to event target (where user clicks)  
-            currentBtn = clickedPage;
-            // clicked button assigns class name to `active`
-            currentBtn.className = 'active';
-            // highlights the current page button in webpage
-            showPage(list, clickedPage.innerHTML);
-         }
-      })
+      const activeBtn = linkListHTML.firstElementChild.firstElementChild;
+   let currentBtn = activeBtn;
+   // button assigns class name to `active`
+   currentBtn.className = 'active';
+
+   linkListHTML.addEventListener('click', (event) => {
+      // stores event.target property to `clicked` (easier to identify) 
+      let clickedPageBtn = event.target;
+      // checks if the event target tagname is a button element
+      if (clickedPageBtn.tagName === 'BUTTON'){
+         // clears class name to an empty string to remove exisiting button
+         currentBtn.className = '';
+         // assigns `active` class name to event target (where user clicks)  
+         currentBtn = clickedPageBtn;
+         // clicked button assigns class name to `active`
+         currentBtn.className = 'active';
+         // highlights the current page button in webpage
+         showPage(list, clickedPageBtn.innerHTML);
+      }
+   });
    }
    // Call functions
    showPage(data, 1);
