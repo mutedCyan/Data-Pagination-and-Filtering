@@ -54,6 +54,7 @@ For assistance:
          }
       }
    }
+   // call showPage function
    showPage(data, 1);
    /**
     `addPagination` function
@@ -75,9 +76,9 @@ For assistance:
                <button type="button">${i}</button>
             </li>
          `;
-         linkListHTML.insertAdjacentHTML('beforeend', pageButtonHTML);
+         linkList.insertAdjacentHTML('beforeend', pageButtonHTML);
       }
-      // get all of the children from `linkListHTML` element (button)
+      // get access to the first button element through linkList with tag name `button`
       const pageBtns = linkList.getElementsByTagName('button');
       let currentPageBtn = pageBtns;
 
@@ -107,7 +108,7 @@ For assistance:
       }
    });
    }
-
+   // call addPagination function
    addPagination(data);
    
    /**
@@ -168,7 +169,6 @@ For assistance:
             
                showPage(newList, 1);
                addPagination(newList);
-   
             }
    /**
     * Invoke search function using an event listener
