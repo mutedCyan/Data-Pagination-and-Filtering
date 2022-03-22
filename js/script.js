@@ -182,4 +182,4 @@ For assistance:
     searchIconBtn.addEventListener('click', () => {
       filterStudentSearch();
       // console.log('Search button is responsive!');
-    })
+    });
