@@ -54,7 +54,7 @@ For assistance:
          }
       }
    }
-   
+   showPage(data, 1);
    /**
     `addPagination` function
    
@@ -66,41 +66,48 @@ For assistance:
    const addPagination = (list) => {
       // math ceil rounds up result to the nearest integar
       const totalOfPages = Math.ceil(list.length / studentsPerPage);
-      const linkListHTML = document.querySelector('.link-list');
-      linkListHTML.innerHTML = "";
+      const linkList = document.querySelector('.link-list');
+      linkList.innerHTML = "";
    
-      for (let j = 1; j <= totalOfPages; j++) {
-         let buttonHTML = `
+      for (let i = 1; i <= totalOfPages; i++) {
+         let pageButtonHTML = `
             <li>
-               <button type="button">${j}</button>
+               <button type="button">${i}</button>
             </li>
          `;
-         linkListHTML.insertAdjacentHTML('beforeend', buttonHTML);
+         linkListHTML.insertAdjacentHTML('beforeend', pageButtonHTML);
       }
       // get all of the children from `linkListHTML` element (button)
-      const activeBtn = linkListHTML.firstElementChild.firstElementChild;
-   let currentBtn = activeBtn;
-   // button assigns class name to `active`
-   currentBtn.className = 'active';
+      const pageBtns = linkList.getElementsByTagName('button');
+      let currentPageBtn = pageBtns;
+
+      if (currentPageBtn.length > 0) {
+         // button assigns `active` class name
+          currentPageBtn[0].className = 'active';
+      } else {
+         const studentList = document.querySelector('.student-list');
+         studentList.innerHTML = `
+            <li>
+               <h3> No Results Found </h3>
+            </li>
+         `;
+      }
 
    linkListHTML.addEventListener('click', (event) => {
-      // stores event.target property to `clicked` (easier to identify) 
+      // stores event target property to `clickedPageBtn` (easier to identify) 
       let clickedPageBtn = event.target;
-      // checks if the event target tagname is a button element
+
       if (clickedPageBtn.tagName === 'BUTTON'){
-         // clears class name to an empty string to remove exisiting button
-         currentBtn.className = '';
-         // assigns `active` class name to event target (where user clicks)  
-         currentBtn = clickedPageBtn;
-         // clicked button assigns class name to `active`
+         // clears `active` class name to an empty string from existing button
+         let removeBtn = document.querySelector('.active').className = '';
+         // clicked button assigns `active` class name to current button
          currentBtn.className = 'active';
-         // highlights the current page button in webpage
+         // calls up showPage function with list and page number displayed
          showPage(list, clickedPageBtn.innerHTML);
       }
    });
    }
-   // Call functions
-   showPage(data, 1);
+
    addPagination(data);
    
    /**
@@ -138,40 +145,30 @@ For assistance:
       Create a new array to store a filtered list for students,
       when the value of text is typed into the searchbox
       for case insensitive reasons, the value will register upper case
-      and lower case inputs.
-   
-      Iterates over the data array with an element's property (first and last),
-      updating the string to an upper case, if the student's name value
-      includes a string value that's also upper cased within the search box,
-      then the student element found in student name is pushed into the new 
-      filtered list. And if the length of the new filtered list is 0, 
-      a "no results found" message will replace the exisiting HTML for 
-      the student list instead.  
+      and lower case inputs
+
+      Iterates over the data array for each array element (student name),
+      converting the string value to an upper case if input within the search box.
+      The data will be pushed into a new array for filtered names, if the length
+      compares to the , a "no results found" message will replace the existing HTML
+      for the student list.  
     */
-            function filterStudentSearch () {
-               let newStudentList = [];
-               let inputValue = searchBox.value.toUpperCase();
+            function filterSearch () {
+               let newList = [];
+               let searchInput = searchBox.value.toUpperCase();
+               // console.log(searchInput);
    
                data.forEach((student) => {
                   let studentName = `${student.name.first} ${student.name.last}`.toUpperCase();
-            
+                  // checks if the first and last names of each student contains the same value as the search input
                   if (studentName.includes(inputValue)) {
-            
                      newStudentList.push(student);
                   }
                });
             
-               showPage(newStudentList, 1);
-               addPagination(newStudentList);
+               showPage(newList, 1);
+               addPagination(newList);
    
-               if (newStudentList.length === 0) {
-                  const noResultMsg = document.querySelector('.student-list');
-                  noResultMsg.innerHTML = `
-                     <li>
-                        <h3 style="font-size: 2rem">No Results Found</h3>
-                     </li>
-                  `;
-               }
             }
    /**
     * Invoke search function using an event listener
@@ -184,6 +181,5 @@ For assistance:
    
     searchIconBtn.addEventListener('click', () => {
       filterStudentSearch();
-      // // check if search button is functional
       // console.log('Search button is responsive!');
     })
