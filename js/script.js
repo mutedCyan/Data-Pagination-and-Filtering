@@ -64,7 +64,7 @@ For assistance:
       removing the existing button to make the current page button active
     */
    
-   const addPagination = (list) => {
+   function addPagination (list) {
       // math ceil rounds up result to the nearest integar
       const totalOfPages = Math.ceil(list.length / studentsPerPage);
       const linkList = document.querySelector('.link-list');
@@ -94,7 +94,7 @@ For assistance:
          `;
       }
 
-   linkListHTML.addEventListener('click', (event) => {
+   linkList.addEventListener('click', (event) => {
       // stores event target property to `clickedPageBtn` (easier to identify) 
       let clickedPageBtn = event.target;
 
