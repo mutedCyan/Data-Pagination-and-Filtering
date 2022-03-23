@@ -64,7 +64,7 @@ For assistance:
       removing the existing button to make the current page button active
     */
    
-   function addPagination (list) {
+   function addPaginationBtns (list) {
       // math ceil rounds up result to the nearest integar
       const totalOfPages = Math.ceil(list.length / studentsPerPage);
       const linkList = document.querySelector('.link-list');
@@ -108,8 +108,8 @@ For assistance:
       }
    });
    }
-   // call addPagination function
-   addPagination(data);
+   // call addPaginationBtns function
+   addPaginationBtns(data);
    
    /**
     ==  EXTRA CREDIT SECTION  ==
@@ -168,7 +168,7 @@ For assistance:
                });
             
                showPage(newList, 1);
-               addPagination(newList);
+               addPaginationBtns(newList);
             }
    /**
     * Invoke search function using an event listener
@@ -177,9 +177,9 @@ For assistance:
     * to the user typing a value into the searchbar
     * in real-time using `keyup`
     */
-    searchBox.addEventListener('keyup', () => filterStudentSearch());
+    searchBox.addEventListener('keyup', () => filterSearch());
    
     searchIconBtn.addEventListener('click', () => {
-      filterStudentSearch();
+      filterSearch();
       // console.log('Search button is responsive!');
     });
