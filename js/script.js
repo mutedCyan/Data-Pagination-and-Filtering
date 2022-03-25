@@ -13,10 +13,10 @@ For assistance:
 /**
    `showPage` Function
 
- *  Creates and inserts DOM elements which display arrangement of nine students per page,
-    with a start and end index value.
+ Creates and inserts DOM elements which display arrangement of nine students per page,
+ with a start and end index value.
  
- *  A for loop will iterate over the data array with the stored student properties,
+ A for loop will iterate over the data array with the stored student properties,
    checking the current value between the first and last pages and analyses the string
    text containing stored elements as HTML and inserted into the DOM tree.
  */
@@ -66,7 +66,7 @@ For assistance:
    
    function addPaginationBtns (list) {
       // math ceil rounds up result to the nearest integar
-      const totalOfPages = Math.ceil(list.length / studentsPerPage);
+      const totalOfPages = Math.ceil((list.length) / studentsPerPage);
       const linkList = document.querySelector('.link-list');
       linkList.innerHTML = "";
    
@@ -78,18 +78,18 @@ For assistance:
          `;
          linkList.insertAdjacentHTML('beforeend', pageButtonHTML);
       }
-      // get access to the first button element through linkList with tag name `button`
+       // get access to the first button element through the li element in linkList
       const pageBtns = linkList.getElementsByTagName('button');
       let currentPageBtn = pageBtns;
 
-      if (currentPageBtn.length > 0) {
+      if (pageBtns.length > 0) {
          // button assigns `active` class name
           currentPageBtn[0].className = 'active';
       } else {
          const studentList = document.querySelector('.student-list');
          studentList.innerHTML = `
             <li>
-               <h3> No Results Found </h3>
+               <h3> No Results Found</h3>
             </li>
          `;
       }
@@ -102,7 +102,7 @@ For assistance:
          // clears `active` class name to an empty string from existing button
          let removeBtn = document.querySelector('.active').className = '';
          // clicked button assigns `active` class name to current button
-         currentBtn.className = 'active';
+         clickedPageBtn.className = 'active';
          // calls up showPage function with list and page number displayed
          showPage(list, clickedPageBtn.innerHTML);
       }
@@ -112,7 +112,7 @@ For assistance:
    addPaginationBtns(data);
    
    /**
-    ==  EXTRA CREDIT SECTION  ==
+    ==  Extra Credit ==
     **/
    
    /**
@@ -162,8 +162,8 @@ For assistance:
                data.forEach((student) => {
                   let studentName = `${student.name.first} ${student.name.last}`.toUpperCase();
                   // checks if the first and last names of each student contains the same value as the search input
-                  if (studentName.includes(inputValue)) {
-                     newStudentList.push(student);
+                  if (studentName.includes(searchInput)) {
+                     newList.push(student);
                   }
                });
             
